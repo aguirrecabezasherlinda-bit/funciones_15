@@ -1,123 +1,163 @@
-// =====================================================
-// CONTADOR GLOBAL
-// =====================================================
 console.log("Funciones Interactivas");
 
 let totalClicks = 0;
+let funcionSeleccionada = null;
 
-// =====================================================
-// FUNCIONES DISPONIBLES
-// =====================================================
+const elementoDemo = document.getElementById("elementoDemo");
+const textoCaja = document.getElementById("textoCaja");
+const resultado = document.getElementById("resultado");
+const panelOpciones = document.getElementById("panelOpciones");
+const camposOpciones = document.getElementById("camposOpciones");
+const formularioOpciones = document.getElementById("formOpciones");
 
-// 1. Muestra un saludo
-function mostrarSaludo() {
-  document.getElementById("resultado").innerHTML = "¡Hola, Herlinda!";
+function mostrarResultado(mensaje) {
+  resultado.textContent = mensaje;
 }
 
-// 2. Muestra la fecha actual
-function mostrarFechaActual() {
-  document.getElementById("resultado").innerHTML = new Date();
+function mostrarSaludo({ nombre }) {
+  mostrarResultado(`¡Hola, ${nombre}!`);
 }
 
-// 3. Cambia el color de la caja
-function aplicarColorRosa() {
-  const elemento = document.getElementById("elementoDemo");
-  elemento.style.animation = "none";
-  elemento.style.backgroundColor = "pink";
+function mostrarFechaActual({ formato }) {
+  const fecha = new Date();
+  mostrarResultado(
+    formato === "fecha"
+      ? fecha.toLocaleDateString("es-PE")
+      : fecha.toLocaleString("es-PE")
+  );
 }
 
-// 4. Aumenta el tamaño de la caja
-function elevarTamanoCaja() {
-  document.getElementById("elementoDemo").style.width = "300px";
+function aplicarColor({ color }) {
+  elementoDemo.style.animation = "none";
+  elementoDemo.style.background = color;
+  mostrarResultado("Color de la caja actualizado.");
 }
 
-// 5. Reduce el tamaño de la caja
-function reducirTamanoCaja() {
-  document.getElementById("elementoDemo").style.width = "100px";
+function elevarTamanoCaja({ tamano }) {
+  elementoDemo.style.width = `${tamano}px`;
+  mostrarResultado(`La caja ahora mide ${tamano} píxeles de ancho.`);
 }
 
-// 6. Oculta la caja
+function reducirTamanoCaja({ tamano }) {
+  elementoDemo.style.width = `${tamano}px`;
+  mostrarResultado(`La caja ahora mide ${tamano} píxeles de ancho.`);
+}
+
 function esconderElemento() {
-  document.getElementById("elementoDemo").style.display = "none";
+  elementoDemo.style.display = "none";
+  mostrarResultado("La caja está oculta.");
 }
 
-// 7. Muestra la caja
 function revelarElemento() {
-  document.getElementById("elementoDemo").style.display = "block";
+  elementoDemo.style.display = "grid";
+  mostrarResultado("La caja está visible.");
 }
 
-// 8. Suma dos números
-function calcularSuma() {
-  document.getElementById("resultado").innerHTML = 5 + 3;
+function calcularSuma({ numero1, numero2 }) {
+  mostrarResultado(`Resultado: ${numero1 + numero2}`);
 }
 
-// 9. Resta dos números
-function calcularResta() {
-  document.getElementById("resultado").innerHTML = 10 - 4;
+function calcularResta({ numero1, numero2 }) {
+  mostrarResultado(`Resultado: ${numero1 - numero2}`);
 }
 
-// 10. Multiplica dos números
-function calcularMultiplicacion() {
-  document.getElementById("resultado").innerHTML = 6 * 7;
+function calcularMultiplicacion({ numero1, numero2 }) {
+  mostrarResultado(`Resultado: ${numero1 * numero2}`);
 }
 
-// 11. Divide dos números
-function calcularDivision() {
-  document.getElementById("resultado").innerHTML = 20 / 5;
+function calcularDivision({ numero1, numero2 }) {
+  mostrarResultado(`Resultado: ${numero1 / numero2}`);
 }
 
-// 12. Cambia el texto de la caja
-function modificarTextoCaja() {
-  document.getElementById("elementoDemo").innerHTML = "Texto cambiado";
+function modificarTextoCaja({ texto }) {
+  textoCaja.textContent = texto;
+  mostrarResultado("Texto de la caja actualizado.");
 }
 
-// 13. Muestra una alerta
-function emitirAlerta() {
-  alert("¡Esto es una alerta!");
+function emitirAlerta({ mensaje }) {
+  alert(mensaje);
+  mostrarResultado("Alerta mostrada.");
 }
 
-// 14. Genera un número aleatorio
-function crearNumeroAzar() {
-  document.getElementById("resultado").innerHTML = Math.floor(Math.random() * 100);
+function crearNumeroAzar({ minimo, maximo }) {
+  const numero = Math.floor(Math.random() * (maximo - minimo + 1)) + minimo;
+  mostrarResultado(`Número aleatorio: ${numero}`);
 }
 
-// 15. Cuenta los clics realizados
-function aumentarContador() {
-  totalClicks++;
-  document.getElementById("resultado").innerHTML = "Clicks: " + totalClicks;
+function aumentarContador({ incremento }) {
+  totalClicks += incremento;
+  mostrarResultado(`Clicks: ${totalClicks}`);
 }
 
-// =====================================================
-// REGISTRO DE FUNCIONES
-// =====================================================
 const registroFunciones = [
-  { nombre: "mostrarSaludo", accion: mostrarSaludo },
-  { nombre: "mostrarFechaActual", accion: mostrarFechaActual },
-  { nombre: "aplicarColorRosa", accion: aplicarColorRosa },
-  { nombre: "elevarTamanoCaja", accion: elevarTamanoCaja },
-  { nombre: "reducirTamanoCaja", accion: reducirTamanoCaja },
-  { nombre: "esconderElemento", accion: esconderElemento },
-  { nombre: "revelarElemento", accion: revelarElemento },
-  { nombre: "calcularSuma", accion: calcularSuma },
-  { nombre: "calcularResta", accion: calcularResta },
-  { nombre: "calcularMultiplicacion", accion: calcularMultiplicacion },
-  { nombre: "calcularDivision", accion: calcularDivision },
-  { nombre: "modificarTextoCaja", accion: modificarTextoCaja },
-  { nombre: "emitirAlerta", accion: emitirAlerta },
-  { nombre: "crearNumeroAzar", accion: crearNumeroAzar },
-  { nombre: "aumentarContador", accion: aumentarContador }
+  { nombre: "mostrarSaludo", accion: mostrarSaludo, campos: '<label>Nombre<input name="nombre" type="text" value="Herlinda" required></label>' },
+  { nombre: "mostrarFechaActual", accion: mostrarFechaActual, campos: '<label>Formato de fecha<select name="formato"><option value="completa">Fecha y hora</option><option value="fecha">Solo fecha</option></select></label>' },
+  { nombre: "aplicarColor", accion: aplicarColor, campos: '<label>Color de la caja<select name="color"><option value="linear-gradient(145deg, #f9a8d4, #ec4899)">Rosa</option><option value="linear-gradient(145deg, #d8b4fe, #9333ea)">Lila</option><option value="linear-gradient(145deg, #fbcfe8, #c084fc)">Rosa y lila</option><option value="linear-gradient(145deg, #fecdd3, #fb7185)">Coral</option><option value="linear-gradient(145deg, #fde68a, #f9a8d4)">Durazno</option></select></label>' },
+  { nombre: "elevarTamanoCaja", accion: elevarTamanoCaja, campos: '<label>Ancho de la caja (150–360 px)<input name="tamano" type="number" min="150" max="360" value="300" required></label>' },
+  { nombre: "reducirTamanoCaja", accion: reducirTamanoCaja, campos: '<label>Ancho de la caja (60–220 px)<input name="tamano" type="number" min="60" max="220" value="120" required></label>' },
+  { nombre: "esconderElemento", accion: esconderElemento, campos: "" },
+  { nombre: "revelarElemento", accion: revelarElemento, campos: "" },
+  { nombre: "calcularSuma", accion: calcularSuma, campos: '<label>Primer número<input name="numero1" type="number" step="any" value="5" required></label><label>Segundo número<input name="numero2" type="number" step="any" value="3" required></label>' },
+  { nombre: "calcularResta", accion: calcularResta, campos: '<label>Primer número<input name="numero1" type="number" step="any" value="10" required></label><label>Segundo número<input name="numero2" type="number" step="any" value="4" required></label>' },
+  { nombre: "calcularMultiplicacion", accion: calcularMultiplicacion, campos: '<label>Primer número<input name="numero1" type="number" step="any" value="6" required></label><label>Segundo número<input name="numero2" type="number" step="any" value="7" required></label>' },
+  { nombre: "calcularDivision", accion: calcularDivision, campos: '<label>Primer número<input name="numero1" type="number" step="any" value="20" required></label><label>Segundo número<input name="numero2" type="number" step="any" value="5" required></label>' },
+  { nombre: "modificarTextoCaja", accion: modificarTextoCaja, campos: '<label>Nuevo texto<input name="texto" type="text" value="Texto cambiado" required></label>' },
+  { nombre: "emitirAlerta", accion: emitirAlerta, campos: '<label>Mensaje de la alerta<input name="mensaje" type="text" value="¡Esto es una alerta!" required></label>' },
+  { nombre: "crearNumeroAzar", accion: crearNumeroAzar, campos: '<label>Valor mínimo<input name="minimo" type="number" step="1" value="0" required></label><label>Valor máximo<input name="maximo" type="number" step="1" value="99" required></label>' },
+  { nombre: "aumentarContador", accion: aumentarContador, campos: '<label>Clicks que se agregan<input name="incremento" type="number" min="1" max="100" step="1" value="1" required></label>' }
 ];
 
-// =====================================================
-// EJECUTA LA FUNCIÓN ELEGIDA Y MUESTRA SU CÓDIGO
-// =====================================================
 function ejecutarFuncion(numero) {
   const item = registroFunciones[numero - 1];
-  item.accion();
-  document.getElementById("tituloFuncion").innerHTML = item.nombre;
-  document.getElementById("bloqueCodigo").innerHTML = item.accion.toString();
+  if (!item) {
+    console.error(`No existe una función con el número ${numero}.`);
+    return;
+  }
 
-  // Muestra también en la consola
-  console.log("Función ejecutada: " + item.nombre);
-  console.log(item.accion.toString());
+  funcionSeleccionada = item;
+  document.getElementById("tituloOpciones").textContent = `Opciones: ${item.nombre}`;
+  camposOpciones.innerHTML = item.campos || '<p class="sin-opciones">Esta acción no necesita valores adicionales.</p>';
+  panelOpciones.hidden = false;
+
+  document.querySelectorAll(".boton-funcion").forEach((boton, indice) => {
+    boton.setAttribute("aria-pressed", String(indice === numero - 1));
+  });
+
+  const primerControl = camposOpciones.querySelector("input, select");
+  if (primerControl) {
+    primerControl.focus();
+  }
 }
+
+formularioOpciones.addEventListener("submit", (evento) => {
+  evento.preventDefault();
+  if (!funcionSeleccionada || !formularioOpciones.reportValidity()) {
+    return;
+  }
+
+  const valores = Object.fromEntries(new FormData(formularioOpciones));
+  for (const campo of ["numero1", "numero2", "tamano", "minimo", "maximo", "incremento"]) {
+    if (valores[campo] !== undefined) {
+      valores[campo] = Number(valores[campo]);
+    }
+  }
+
+  if (funcionSeleccionada.nombre === "calcularDivision" && valores.numero2 === 0) {
+    mostrarResultado("No se puede dividir entre cero. Elige otro segundo número.");
+    formularioOpciones.elements.numero2.focus();
+    return;
+  }
+
+  if (funcionSeleccionada.nombre === "crearNumeroAzar" && valores.maximo < valores.minimo) {
+    mostrarResultado("El valor máximo debe ser igual o mayor que el mínimo.");
+    formularioOpciones.elements.maximo.focus();
+    return;
+  }
+
+  funcionSeleccionada.accion(valores);
+  document.getElementById("tituloFuncion").textContent = funcionSeleccionada.nombre;
+  document.getElementById("bloqueCodigo").textContent = funcionSeleccionada.accion.toString();
+
+  console.log(`Función ejecutada: ${funcionSeleccionada.nombre}`);
+  console.log(funcionSeleccionada.accion.toString());
+});

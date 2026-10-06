@@ -7,37 +7,71 @@
 </head>
 <body>
   <header class="encabezado">
-    <h1>⚡ Funciones Interactivas</h1>
+    <h1><img class="logo-javascript" src="imagenes/image.png" alt="Logotipo de JavaScript">Funciones Interactivas</h1>
     <p>Selecciona una función para ejecutarla y ver su código</p>
   </header>
 
   <main class="contenido">
 
     <section class="zona-demostracion">
-      <div id="elementoDemo" class="elemento-demo">Caja</div>
+      <div class="texto-seccion">
+        <p class="etiqueta-seccion">ÁREA INTERACTIVA</p>
+        <h2>Prueba los efectos</h2>
+        <p>Ejecuta una acción y observa cómo cambia el elemento.</p>
+      </div>
+      <div class="visual-demo">
+        <img class="imagen-demo" src="imagenes/ilustracion-codigo.svg" alt="Ilustración decorativa de código JavaScript">
+        <div id="elementoDemo" class="elemento-demo">
+          <img class="foto-caja" src="imagenes/foto-caja.png" alt="Arreglo de flores y conejo con globo decorativo">
+          <span id="textoCaja" class="texto-caja">Caja</span>
+        </div>
+      </div>
       <p id="resultado" class="resultado">Selecciona una función...</p>
     </section>
 
     <section class="zona-botones">
-      <button class="boton-funcion" onclick="ejecutarFuncion(1)">1. Saludar</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(2)">2. Mostrar Fecha</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(3)">3. Cambiar Color</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(4)">4. Agrandar Caja</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(5)">5. Reducir Caja</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(6)">6. Ocultar Caja</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(7)">7. Mostrar Caja</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(8)">8. Sumar</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(9)">9. Restar</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(10)">10. Multiplicar</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(11)">11. Dividir</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(12)">12. Cambiar Texto</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(13)">13. Alerta</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(14)">14. Número Aleatorio</button>
-      <button class="boton-funcion" onclick="ejecutarFuncion(15)">15. Contar Clicks</button>
+      <div class="texto-seccion">
+        <p class="etiqueta-seccion">15 ACCIONES</p>
+        <h2>Elige una función</h2>
+        <p>Cada botón ejecuta una función de JavaScript.</p>
+      </div>
+      <div class="rejilla-botones">
+        <button class="boton-funcion" onclick="ejecutarFuncion(1)">1. Saludar</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(2)">2. Mostrar Fecha</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(3)">3. Cambiar Color</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(4)">4. Agrandar Caja</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(5)">5. Reducir Caja</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(6)">6. Ocultar Caja</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(7)">7. Mostrar Caja</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(8)">8. Sumar</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(9)">9. Restar</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(10)">10. Multiplicar</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(11)">11. Dividir</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(12)">12. Cambiar Texto</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(13)">13. Alerta</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(14)">14. Número Aleatorio</button>
+        <button class="boton-funcion" onclick="ejecutarFuncion(15)">15. Contar Clicks</button>
+      </div>
+      <section id="panelOpciones" class="panel-opciones" hidden aria-labelledby="tituloOpciones">
+        <div class="texto-seccion">
+          <p class="etiqueta-seccion">PERSONALIZA LA ACCIÓN</p>
+          <h2 id="tituloOpciones">Opciones de la función</h2>
+        </div>
+        <form id="formOpciones">
+          <div id="camposOpciones" class="campos-opciones"></div>
+          <button class="boton-ejecutar" type="submit">Ejecutar función</button>
+        </form>
+      </section>
     </section>
 
     <section class="zona-codigo">
-      <h2>📄 Función ejecutada: <span id="tituloFuncion">—</span></h2>
+      <div class="encabezado-codigo">
+        <div>
+          <p class="etiqueta-seccion">VISTA DEL CÓDIGO</p>
+          <h2>Función ejecutada: <span id="tituloFuncion">—</span></h2>
+        </div>
+        <span class="indicador-codigo" aria-hidden="true">&lt;/&gt;</span>
+      </div>
       <pre id="bloqueCodigo">// El código de la función aparecerá aquí</pre>
     </section>
 
