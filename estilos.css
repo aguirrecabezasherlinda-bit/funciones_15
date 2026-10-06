@@ -1,0 +1,131 @@
+/* =====================================================
+   ESTILOS GENERALES
+===================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #fce7f3, #ede9fe);
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* =====================================================
+   ENCABEZADO
+===================================================== */
+.encabezado {
+  background-color: #9d4edd;
+  color: white;
+  padding: 25px 10px;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.encabezado p {
+  margin: 8px 0 0;
+  color: #e9d5ff;
+}
+
+/* =====================================================
+   CONTENIDO PRINCIPAL
+===================================================== */
+.contenido {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+/* =====================================================
+   ZONA DE DEMOSTRACIÓN
+===================================================== */
+.zona-demostracion {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+}
+
+.elemento-demo {
+  width: 200px;
+  height: 200px;
+  background-color: #f9a8d4;
+  color: #831843;
+  margin: 10px auto;
+  line-height: 200px;
+  font-weight: bold;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(219, 39, 119, 0.3);
+  transition: width 0.3s;
+  animation: animacionColores 4s ease-in-out infinite;
+}
+
+@keyframes animacionColores {
+  0%, 100% { background-color: #f9a8d4; }
+  25% { background-color: #fbcfe8; }
+  50% { background-color: #e9d5ff; }
+  75% { background-color: #ddd6fe; }
+}
+
+.resultado {
+  font-size: 18px;
+  color: #7e22ce;
+}
+
+/* =====================================================
+   ZONA DE BOTONES
+===================================================== */
+.zona-botones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.boton-funcion {
+  padding: 12px 10px;
+  border: none;
+  background-color: #c084fc;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.15s, background-color 0.2s;
+}
+
+.boton-funcion:hover {
+  background-color: #a855f7;
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   ZONA DE CÓDIGO
+===================================================== */
+.zona-codigo {
+  text-align: left;
+  background-color: #2e1065;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.zona-codigo h2 {
+  color: #f0abfc;
+  margin-top: 0;
+  font-size: 18px;
+}
+
+#bloqueCodigo {
+  color: #f3e8ff;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+  margin: 0;
+}

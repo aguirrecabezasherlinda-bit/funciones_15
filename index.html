@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Funciones Interactivas</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <h1>⚡ Funciones Interactivas</h1>
+    <p>Selecciona una función para ejecutarla y ver su código</p>
+  </header>
+
+  <main class="contenido">
+
+    <section class="zona-demostracion">
+      <div id="elementoDemo" class="elemento-demo">Caja</div>
+      <p id="resultado" class="resultado">Selecciona una función...</p>
+    </section>
+
+    <section class="zona-botones">
+      <button class="boton-funcion" onclick="ejecutarFuncion(1)">1. Saludar</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(2)">2. Mostrar Fecha</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(3)">3. Cambiar Color</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(4)">4. Agrandar Caja</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(5)">5. Reducir Caja</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(6)">6. Ocultar Caja</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(7)">7. Mostrar Caja</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(8)">8. Sumar</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(9)">9. Restar</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(10)">10. Multiplicar</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(11)">11. Dividir</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(12)">12. Cambiar Texto</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(13)">13. Alerta</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(14)">14. Número Aleatorio</button>
+      <button class="boton-funcion" onclick="ejecutarFuncion(15)">15. Contar Clicks</button>
+    </section>
+
+    <section class="zona-codigo">
+      <h2>📄 Función ejecutada: <span id="tituloFuncion">—</span></h2>
+      <pre id="bloqueCodigo">// El código de la función aparecerá aquí</pre>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
